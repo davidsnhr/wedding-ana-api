@@ -19,6 +19,9 @@ app.use(
   })
 );
 
+app.get('/', (req, res) => {
+  res.send('¡Bienvenido a la API de Wedding!');
+});
 // app.use('/api/guests', guestRoutes);
 app.use('/api/groups', groupRoutes);
 

@@ -1,5 +1,6 @@
 import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
+import pg from 'pg'; // Importa el cliente de PostgreSQL
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 import fs from 'fs';
@@ -16,6 +17,13 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: 'postgres',
+    dialectModule: pg, // Especifica el cliente de PostgreSQL
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, // Necesario para Neon
+      },
+    },
   }
 );
 
