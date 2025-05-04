@@ -10,22 +10,16 @@ dotenv.config();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const sequelize = new Sequelize(
-  process.env.DB_NAME,
-  process.env.DB_USERNAME,
-  process.env.DB_PASSWORD,
-  {
-    host: process.env.DB_HOST,
-    dialect: 'postgres',
-    dialectModule: pg, // Especifica el cliente de PostgreSQL
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false, // Necesario para Neon
-      },
+const sequelize = new Sequelize(process.env.DB_URL, {
+  dialect: 'postgres',
+  dialectModule: pg, // Especifica el cliente de PostgreSQL
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false, // Necesario para Neon
     },
-  }
-);
+  },
+});
 
 const db = {};
 
