@@ -15,10 +15,13 @@ export default (sequelize, DataTypes) => {
     {
       name: DataTypes.STRING,
       lastName: DataTypes.STRING,
-      email: DataTypes.STRING,
+      phone: { // Cambiado de email a phone
+        type: DataTypes.STRING,
+        allowNull: true, // Cambia esto según tus necesidades (true o false)
+      },
       groupId: {
-        type: DataTypes.UUID, // Cambia el tipo a UUID
-        allowNull: false, // Asegúrate de que no permita valores nulos si es obligatorio
+        type: DataTypes.UUID,
+        allowNull: false,
       },
     },
     {
