@@ -5,6 +5,7 @@ import cors from 'cors';
 import db from './models/index.js'; // Importa la instancia de Sequelize
 // import guestRoutes from './routes/guestRoute.js';
 import groupRoutes from './routes/groupRoute.js';
+import messageRoutes from './routes/messageRoute.js';
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 });
 // app.use('/api/guests', guestRoutes);
 app.use('/api/groups', groupRoutes);
+app.use('/api/messages', messageRoutes);
 
 // Verificar la conexión a la base de datos
 const { sequelize } = db;
